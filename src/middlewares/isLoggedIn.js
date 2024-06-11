@@ -10,7 +10,13 @@ const isLoggedIn = asyncHandler(async (req, res, next) => {
         throw new CustomError(401, "not authorized or signedIn into App");
     }
     const decode = await jwt.verify(token, process.env.JWT_SECRET);
-    req.user = decode;
+    if (!decode) {
+        throw new CustomError(401, "Invalid Token");
+    }
+    req.user = {
+        _id: decode._id,
+        email: decode.email,
+    };
     next();
 });
 
