@@ -18,7 +18,9 @@ class Listener {
         );
         subscription.on("message", (msg) => {
             console.log(
-                `Received message ${msg.sequence} from ${this.subject}/${this.queueGroupName}`
+                `Received from  ${msg.getSequence()} - ${this.subject}/${
+                    this.queueGroupName
+                }`
             );
             const parsedData = this.parseMessage(msg);
             this.onMessage(parsedData, msg);
