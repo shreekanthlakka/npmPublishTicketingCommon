@@ -5,3 +5,4 @@ export * from "./src/middlewares/isLoggedIn.js";
 export * from "./src/events/base-listener.js";
 export * from "./src/events/base-publisher.js";
 export * from "./src/events/subjects.js";
+export * from "./src/types/order-status.js";
