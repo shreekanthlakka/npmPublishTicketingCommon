@@ -4,3 +4,5 @@ const OrderStatus = Object.freeze({
     AwaitingPayment: "awaiting:payment",
     Complete: "complete",
 });
+
+export { OrderStatus };
