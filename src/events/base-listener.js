@@ -8,7 +8,8 @@ class Listener {
             .subscriptionOptions()
             .setDeliverAllAvailable()
             .setManualAckMode(true)
-            .setAckWait(this.ackWait);
+            .setAckWait(5 * 1000)
+            .setDurableName(this.queueGroupName);
     }
     listen() {
         const subscription = this.client.subscribe(
