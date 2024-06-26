@@ -5,6 +5,7 @@ const Subjects = Object.freeze({
     OrderCreated: "order:created",
     OrderDeleated: "order:deleated",
     OrderCancelled: "order:cancelled",
+    ExpirationComplete: "expiration:complete",
 });
 
 export { Subjects };
