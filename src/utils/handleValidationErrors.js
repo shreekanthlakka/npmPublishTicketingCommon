@@ -1,6 +1,6 @@
-import { asyncHandler } from "./asyncHandler";
+import { asyncHandler } from "./asyncHandler.js";
 import { validationResult } from "express-validator";
-import { CustomError } from "./CustomError";
+import { CustomError } from "./CustomError.js";
 
 const handleValidationErrors = asyncHandler(async (req, res, next) => {
     const errors = validationResult(req);
