@@ -9,4 +9,10 @@ const Subjects = Object.freeze({
     PaymentCreated: "payment:created",
 });
 
-export { Subjects };
+const LeetCodeSubjects = Object.freeze({
+    LeetCodeProblemCreated: "leetcode:problem:created",
+    LeetCodeProblemSubmitted: "leetcode:problem:submitted",
+    UserLoggedIn: "user:loggedin",
+});
+
+export { Subjects, LeetCodeSubjects };
