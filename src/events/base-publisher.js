@@ -8,7 +8,7 @@ class Publisher {
                 if (err) {
                     return reject(err);
                 }
-                console.log(`Published data to ${this.subject}`);
+                console.log(` ==> Published data to ==> ${this.subject}`);
                 resolve();
             });
         });
