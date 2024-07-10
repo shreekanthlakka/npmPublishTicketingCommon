@@ -9,8 +9,10 @@ class ProblemDefinationParser {
         const inputs = this.inputs.map((ele) => ele.variableName).join(", ");
         const output = this.output.variableName;
         return `function ${this.functionName}(${inputs}) {
-        // write your logic here
-        return ${output};
+
+            // write your logic here
+            
+            return ${output};
         }`;
     }
     generatePython() {
