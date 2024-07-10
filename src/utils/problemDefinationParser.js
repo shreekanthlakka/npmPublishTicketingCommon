@@ -15,13 +15,13 @@ class ProblemDefinationParser {
             return ${output};
         }`;
     }
-    generatePython() {
-        const inputs = this.inputs.map((ele) => ele.variableName).join(", ");
-        const output = this.output.variableName;
-        return `def ${this.functionName}(${inputs}):
-        # write your logic here
-        return ${output}`;
-    }
+    // generatePython() {
+    //     const inputs = this.inputs.map((ele) => ele.variableName).join(", ");
+    //     const output = this.output.variableName;
+    //     return `def ${this.functionName}(${inputs}):
+    //     # write your logic here
+    //     return ${output}`;
+    // }
 
     generateRust() {
         const inputs = this.inputs
