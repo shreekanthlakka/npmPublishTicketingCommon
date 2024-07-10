@@ -9,3 +9,4 @@ export * from "./src/events/subjects.js";
 export * from "./src/types/order-status.js";
 export * from "./src/leetcode/types/languages.js";
 export * from "./src/utils/customRole.js";
+export * from "./src/utils/problemDefinationParser.js";
