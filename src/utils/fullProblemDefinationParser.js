@@ -14,17 +14,18 @@ class FullProblemDefinationParser {
             .map((field) => {
                 return `const ${field.variableName} = ${field.value};`;
             })
-            .join("\n  ");
+            .join("\n\t  ");
         const outputType = this.output.type;
         const functionCall = `const result = ${this.functionName}(${inputs});`;
         const outputWrite = `console.log(result);`;
 
-        return `##USER_CODE_HERE##
+        return `
+        ##USER_CODE_HERE##
 
-        ${inputReads}
-        ${functionCall}
-        ${outputWrite}
-            `;
+            ${inputReads}
+            ${functionCall}
+            ${outputWrite}
+        `;
     }
 
     generateRust() {
@@ -45,14 +46,15 @@ class FullProblemDefinationParser {
                     return `let ${field.variableName}: ${type} = ${field.value};`;
                 }
             })
-            .join("\n  ");
+            .join("\n\t  ");
         const outputType = this.mapTypeToRust(this.output.type);
         const functionCall = `let result = ${this.title}(${this.inputFields
             .map((field) => field.variableName)
             .join(", ")});`;
         const outputWrite = `println!("result = {:?}", result);`;
 
-        return `##USER_CODE_HERE##
+        return `
+        ##USER_CODE_HERE##
         fn main() {
             ${inputReads}
             ${functionCall}
@@ -76,24 +78,25 @@ class FullProblemDefinationParser {
                     return `${type} ${field.variableName} = ${field.value};`;
                 }
             })
-            .join("\n  ");
+            .join("\n\t  ");
         const outputType = this.output.type;
         const functionCall = `${outputType} result = ${
             this.functionName
         }(${this.inputFields.map((field) => field.variableName).join(", ")});`;
         const outputWrite = `std::cout << result << std::endl;`;
 
-        return `#include <iostream>
+        return `
+        #include <iostream>
         #include <vector>
         #include <string>
         
         ##USER_CODE_HERE##
         
         int main() {
-          ${inputReads}
-          ${functionCall}
-          ${outputWrite}
-          return 0;
+            ${inputReads}
+            ${functionCall}
+            ${outputWrite}
+            return 0;
         }
         `;
     }
