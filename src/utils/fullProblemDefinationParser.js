@@ -47,7 +47,7 @@ class FullProblemDefinationParser {
             })
             .join("\n  ");
         const outputType = this.mapTypeToRust(this.output.type);
-        const functionCall = `let result = ${this.title}(${this.inputs
+        const functionCall = `let result = ${this.title}(${this.inputFields
             .map((field) => field.variableName)
             .join(", ")});`;
         const outputWrite = `println!("result = {:?}", result);`;
