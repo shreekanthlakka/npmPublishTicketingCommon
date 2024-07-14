@@ -14,7 +14,7 @@ class FullProblemDefinationParser {
             .map((field) => {
                 return `const ${field.variableName} = ${field.value};`;
             })
-            .join("\n  \t");
+            .join("\n");
         const outputType = this.output.type;
         const functionCall = `const result = ${this.functionName}(${inputs});`;
         const outputWrite = `console.log(result);`;
@@ -46,7 +46,7 @@ ${outputWrite}
                     return `let ${field.variableName}: ${type} = ${field.value};`;
                 }
             })
-            .join("\n  \t");
+            .join("\n");
         const outputType = this.mapTypeToRust(this.output.type);
         const functionCall = `let result = ${this.title}(${this.inputFields
             .map((field) => field.variableName)
@@ -79,7 +79,7 @@ fn main() {
                     return `${type} ${field.variableName} = ${field.value};`;
                 }
             })
-            .join("\n  \t");
+            .join("\n");
         const outputType = this.output.type;
         const functionCall = `${outputType} result = ${
             this.functionName
