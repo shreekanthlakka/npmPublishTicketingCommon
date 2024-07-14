@@ -20,11 +20,11 @@ class FullProblemDefinationParser {
         const outputWrite = `console.log(result);`;
 
         return `
-        ##USER_CODE_HERE##
+##USER_CODE_HERE##
 
-            ${inputReads}
-            ${functionCall}
-            ${outputWrite}
+${inputReads}
+${functionCall}
+${outputWrite}
         `;
     }
 
@@ -54,12 +54,13 @@ class FullProblemDefinationParser {
         const outputWrite = `println!("result = {:?}", result);`;
 
         return `
-        ##USER_CODE_HERE##
-        fn main() {
-            ${inputReads}
-            ${functionCall}
-            ${outputWrite}
-        }`;
+##USER_CODE_HERE##
+
+fn main() {
+    ${inputReads}
+    ${functionCall}
+    ${outputWrite}
+}`;
     }
 
     generateCpp() {
@@ -86,18 +87,18 @@ class FullProblemDefinationParser {
         const outputWrite = `std::cout << result << std::endl;`;
 
         return `
-        #include <iostream>
-        #include <vector>
-        #include <string>
-        
-        ##USER_CODE_HERE##
-        
-        int main() {
-            ${inputReads}
-            ${functionCall}
-            ${outputWrite}
-            return 0;
-        }
+#include <iostream>
+#include <vector>
+#include <string>
+
+##USER_CODE_HERE##
+
+int main() {
+    ${inputReads}
+    ${functionCall}
+    ${outputWrite}
+    return 0;
+}
         `;
     }
 
