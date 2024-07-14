@@ -9,12 +9,10 @@ class ProblemDefinationParser {
         const inputs = this.inputs.map((ele) => ele.variableName).join(", ");
         const output = this.output.variableName;
         return `
-        
-        function ${this.functionName}(${inputs}) {
-            // write your logic here
-            return ${output};
-        }
-            `;
+function ${this.functionName}(${inputs}) {
+    // write your logic here
+    return ${output};
+}`;
     }
     // generatePython() {
     //     const inputs = this.inputs.map((ele) => ele.variableName).join(", ");
@@ -32,12 +30,7 @@ class ProblemDefinationParser {
             )
             .join(", ");
         const outputType = this.mapTypeToRust(this.output.type);
-        return `
-        
-        fn ${this.functionName}(${inputs}) -> ${outputType} {
-            // Implementation goes here    result
-        }
-            `;
+        return `fn ${this.functionName}(${inputs}) -> ${outputType} {\n\t//Implementation goes here\n\tresult\n}`;
     }
 
     generateCpp() {
@@ -47,13 +40,9 @@ class ProblemDefinationParser {
                     `${this.mapTypeToCpp(field.type)} ${field.variableName}`
             )
             .join(", ");
-        return `
-        
-        ${this.mapTypeToCpp(this.output.type)} ${this.functionName}(${inputs}) {
-            // Implementation goes here
-            return result;
-        }
-            `;
+        return `${this.mapTypeToCpp(this.output.type)} ${
+            this.functionName
+        }(${inputs}) {\n\t//Implementation goes here\n\treturn result;\n}`;
     }
 
     mapTypeToRust(type) {
