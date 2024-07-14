@@ -8,12 +8,13 @@ class ProblemDefinationParser {
     generateJavaScript() {
         const inputs = this.inputs.map((ele) => ele.variableName).join(", ");
         const output = this.output.variableName;
-        return `function ${this.functionName}(${inputs}) {
-
+        return `
+        
+        function ${this.functionName}(${inputs}) {
             // write your logic here
-            
             return ${output};
-        }`;
+        }
+            `;
     }
     // generatePython() {
     //     const inputs = this.inputs.map((ele) => ele.variableName).join(", ");
@@ -31,7 +32,12 @@ class ProblemDefinationParser {
             )
             .join(", ");
         const outputType = this.mapTypeToRust(this.output.type);
-        return `fn ${this.functionName}(${inputs}) -> ${outputType} {\n    // Implementation goes here\n    result\n}`;
+        return `
+        
+        fn ${this.functionName}(${inputs}) -> ${outputType} {
+            // Implementation goes here    result
+        }
+            `;
     }
 
     generateCpp() {
@@ -41,9 +47,13 @@ class ProblemDefinationParser {
                     `${this.mapTypeToCpp(field.type)} ${field.variableName}`
             )
             .join(", ");
-        return `${this.mapTypeToCpp(this.output.type)} ${
-            this.functionName
-        }(${inputs}) {\n    // Implementation goes here\n    return result;\n}`;
+        return `
+        
+        ${this.mapTypeToCpp(this.output.type)} ${this.functionName}(${inputs}) {
+            // Implementation goes here
+            return result;
+        }
+            `;
     }
 
     mapTypeToRust(type) {
