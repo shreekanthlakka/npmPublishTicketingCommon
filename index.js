@@ -11,3 +11,4 @@ export * from "./src/leetcode/types/languages.js";
 export * from "./src/utils/customRole.js";
 export * from "./src/utils/problemDefinationParser.js";
 export * from "./src/utils/fullProblemDefinationParser.js";
+export * from "./src/utils/fullProblemDefinationParserArgs.js";
