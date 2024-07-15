@@ -8,7 +8,9 @@ const Languages = Object.freeze({
 });
 
 const LanguageBaseImages = Object.freeze({
-    JAVASCRIPT: "",
+    javascript: "",
+    cplusplus: "",
+    rust: "",
 });
 
-export { Languages };
+export { Languages, LanguageBaseImages };
