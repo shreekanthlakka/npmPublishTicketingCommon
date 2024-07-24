@@ -13,6 +13,7 @@ const LeetCodeSubjects = Object.freeze({
     LeetCodeProblemCreated: "leetcode:problem:created",
     LeetCodeProblemSubmitted: "leetcode:problem:submitted",
     UserLoggedIn: "user:loggedin",
+    UserCreated: "user:created",
     JobCompletedStatus: "job:completed:status",
 });
 
