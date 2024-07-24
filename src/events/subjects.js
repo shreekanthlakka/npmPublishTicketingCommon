@@ -15,6 +15,9 @@ const LeetCodeSubjects = Object.freeze({
     UserLoggedIn: "user:loggedin",
     UserCreated: "user:created",
     JobCompletedStatus: "job:completed:status",
+    OrderCreated: "order:created",
+    OrderUpdated: "order:updated",
+    OrderCancelled: "order:cancelled",
 });
 
 export { Subjects, LeetCodeSubjects };
