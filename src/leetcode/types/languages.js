@@ -23,10 +23,18 @@ const Commend = Object.freeze({
     ruby: ["ruby", "/scripts/function.rb"],
     java: ["java", "-jar", "/scripts/function.jar"],
     rust: ["cargo", "run", "--bin", "main"],
+    // cplusplus: [
+    //     "/bin/sh",
+    //     "-c",
+    //     "g++ /scripts/function.cpp -o /tmp/sum && /tmp/sum",
+    // ],
     cplusplus: [
-        "/bin/sh",
-        "-c",
-        "g++ /scripts/function.cpp -o /tmp/sum && /tmp/sum",
+        "g++",
+        "-o",
+        "/tmp/function",
+        "/scripts/function.cpp",
+        "&&",
+        "/tmp/function",
     ],
 });
 
