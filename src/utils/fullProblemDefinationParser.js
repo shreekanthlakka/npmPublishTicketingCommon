@@ -37,21 +37,33 @@ ${outputWrite}
             .join(", ");
         const inputReads = this.inputFields
             .map((field) => {
+                // const type = this.mapTypeToRust(field.type);
+                // if (type.startsWith("Vec")) {
+                //     return `let ${field.variableName}: ${type} = ${field.value}.to_vec();`;
+                // } else if (type === "String") {
+                //     return `let ${field.variableName}: ${type} = ${field.value}.to_string();`;
+                // } else {
+                //     return `let ${field.variableName}: ${type} = ${field.value};`;
+                // }
                 const type = this.mapTypeToRust(field.type);
                 if (type.startsWith("Vec")) {
                     return `let ${field.variableName}: ${type} = ${field.value}.to_vec();`;
                 } else if (type === "String") {
                     return `let ${field.variableName}: ${type} = ${field.value}.to_string();`;
+                } else if (
+                    ["i32", "i64", "f32", "f64", "u32", "u64"].includes(type)
+                ) {
+                    return `let ${field.variableName}: ${type} = ${field.value}.parse().expect("Invalid input for ${field.variableName}");`;
                 } else {
                     return `let ${field.variableName}: ${type} = ${field.value};`;
                 }
             })
-            .join("\n");
+            .join("\n\t");
         const outputType = this.mapTypeToRust(this.output.type);
         const functionCall = `let result = ${this.title}(${this.inputFields
             .map((field) => field.variableName)
             .join(", ")});`;
-        const outputWrite = `println!("result = {:?}", result);`;
+        const outputWrite = `println!("result = {}", result);`;
 
         return `
 ##USER_CODE_HERE##

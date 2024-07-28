@@ -15,7 +15,7 @@ class GenerateFullBoilerPlateCodeArgs {
                     index + 2
                 }]);`;
             })
-            .join("\n");
+            .join("\n\t");
         const functionCall = `const result = ${this.functionName}(${inputs});`;
         const outputWrite = `console.log(result);`;
 
@@ -31,16 +31,24 @@ ${outputWrite}
     generateRust() {
         const inputReads = this.inputFields
             .map((field, index) => {
+                // const type = this.mapTypeToRust(field.type);
+                // if (type.startsWith("Vec")) {
+                //     return `let ${field.variableName}: ${type} = serde_json::from_str(&args[${index}]).unwrap();`;
+                // } else if (type === "String") {
+                //     return `let ${field.variableName}: ${type} = args[${index}].to_string();`;
+                // } else {
+                //     return `let ${field.variableName}: ${type} = args[${index}].parse().unwrap();`;
+                // }
                 const type = this.mapTypeToRust(field.type);
                 if (type.startsWith("Vec")) {
-                    return `let ${field.variableName}: ${type} = serde_json::from_str(&args[${index}]).unwrap();`;
+                    return `let ${field.variableName}: ${type} = serde_json::from_str(&args[${index}]).expect("Invalid input for ${field.variableName}");`;
                 } else if (type === "String") {
                     return `let ${field.variableName}: ${type} = args[${index}].to_string();`;
                 } else {
-                    return `let ${field.variableName}: ${type} = args[${index}].parse().unwrap();`;
+                    return `let ${field.variableName}: ${type} = args[${index}].parse().expect("Invalid input for ${field.variableName}");`;
                 }
             })
-            .join("\n");
+            .join("\n\t");
         const functionCall = `let result = ${
             this.functionName
         }(${this.inputFields.map((field) => field.variableName).join(", ")});`;
