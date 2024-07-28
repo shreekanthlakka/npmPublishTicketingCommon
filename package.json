@@ -1,6 +1,6 @@
 {
     "name": "@shreekanthlakka/common",
-    "version": "1.0.43",
+    "version": "1.0.44",
     "description": "",
     "main": "index.js",
     "type": "module",
@@ -19,6 +19,7 @@
     },
     "homepage": "https://github.com/shreekanthlakka/npmPublishTicketingCommon#readme",
     "dependencies": {
+        "@shreekanthlakka/common": "^1.0.43",
         "express-validator": "^7.1.0",
         "jsonwebtoken": "^9.0.2"
     }
