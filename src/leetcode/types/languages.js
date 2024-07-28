@@ -18,15 +18,15 @@ const BaseImages = Object.freeze({
 });
 
 const Commend = Object.freeze({
-    javascript: ["node", "/scripts/index.js"],
-    python: ["python", "/scripts/index.py"],
-    ruby: ["ruby", "/scripts/index.rb"],
-    java: ["java", "-jar", "/scripts/index.jar"],
+    javascript: ["node", "/scripts/function.js"],
+    python: ["python", "/scripts/function.py"],
+    ruby: ["ruby", "/scripts/function.rb"],
+    java: ["java", "-jar", "/scripts/function.jar"],
     rust: ["cargo", "run", "--bin", "main"],
     cplusplus: [
         "/bin/sh",
         "-c",
-        "g++ /scripts/main.cpp -o /scripts/main && /scripts/main",
+        "g++ /scripts/function.cpp -o /scripts/main && /scripts/main",
     ],
 });
 
