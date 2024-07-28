@@ -118,7 +118,7 @@ fn main() {
 template <typename T>
 std::vector<T> parseArray(const std::string &s) {
     std::vector<T> result;
-    std::stringstream ss(s.substr(1, s.size() - 2)); // Remove the square brackets
+    std::stringstream ss(s.substr(1, s.size() - 2)); 
     T value;
     while (ss >> value) {
         result.push_back(value);

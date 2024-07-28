@@ -26,13 +26,7 @@ const Commend = Object.freeze({
     cplusplus: [
         "/bin/sh",
         "-c",
-        "&&",
-        "g++",
-        "-o",
-        "main",
-        "/scripts/main.cpp",
-        "&&",
-        "./main",
+        "g++ /scripts/main.cpp -o /scripts/main && /scripts/main",
     ],
 });
 
