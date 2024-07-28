@@ -29,12 +29,9 @@ const Commend = Object.freeze({
     //     "g++ /scripts/function.cpp -o /tmp/sum && /tmp/sum",
     // ],
     cplusplus: [
-        "g++",
-        "-o",
-        "/tmp/function",
-        "/scripts/function.cpp",
-        "&&",
-        "/tmp/function",
+        "/bin/sh",
+        "-c",
+        "g++ /scripts/function.cpp -o /tmp/function && /tmp/function",
     ],
 });
 
