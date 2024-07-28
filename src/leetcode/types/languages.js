@@ -30,4 +30,10 @@ const Commend = Object.freeze({
     ],
 });
 
-export { Languages, BaseImages, Commend };
+const LanguageFileExtensions = Object.freeze({
+    javascript: "js",
+    rust: "rs",
+    cplusplus: "cpp",
+});
+
+export { Languages, BaseImages, Commend, LanguageFileExtensions };
