@@ -5,6 +5,7 @@ const Languages = Object.freeze({
     JAVA: "java",
     CSHARP: "csharp",
     CPLUSPLUS: "cplusplus",
+    RUST: "rust",
 });
 
 const BaseImages = Object.freeze({
