@@ -85,6 +85,23 @@ fn main() {
                 //         index + 1
                 //     }]);`;
                 // }
+                // const type = this.mapTypeToCpp(field.type);
+                // if (type.startsWith("std::vector")) {
+                //     // Adjust the parseArray template type based on the field type
+                //     const elementType = type.match(/std::vector<(.+)>/)[1];
+                //     return `${type} ${
+                //         field.variableName
+                //     } = parseArray<${elementType}>(argv[${index + 1}]);`;
+                // } else if (type === "std::string") {
+                //     return `${type} ${field.variableName} = argv[${
+                //         index + 1
+                //     }];`;
+                // } else {
+                //     // Add more type parsing if needed
+                //     return `${type} ${field.variableName} = std::stoi(argv[${
+                //         index + 1
+                //     }]);`;
+                // }
                 const type = this.mapTypeToCpp(field.type);
                 if (type.startsWith("std::vector")) {
                     // Adjust the parseArray template type based on the field type
@@ -132,6 +149,12 @@ std::vector<T> parseArray(const std::string &s) {
 ##USER_CODE_HERE##
 
 int main(int argc, char* argv[]) {
+    if (argc != ${this.inputFields.length + 1}) {
+        std::cerr << "Usage: " << argv[0] << " ${this.inputFields
+            .map((_, i) => `<arg${i + 1}>`)
+            .join(" ")}" << std::endl;
+        return 1;
+    }
     ${inputReads}
     ${functionCall}
     ${outputWrite}
