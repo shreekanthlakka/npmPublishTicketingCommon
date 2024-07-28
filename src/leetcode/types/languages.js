@@ -26,7 +26,7 @@ const Commend = Object.freeze({
     cplusplus: [
         "/bin/sh",
         "-c",
-        "g++ /scripts/function.cpp -o /tmp/sum && /tmp/sum",
+        "g++ /scripts/function.cpp -o /tmp/sum && /tmp/sum '$@'",
     ],
 });
 

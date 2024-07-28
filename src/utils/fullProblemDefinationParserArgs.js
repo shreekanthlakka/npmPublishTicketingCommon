@@ -114,6 +114,7 @@ fn main() {
 #include <vector>
 #include <string>
 #include <sstream>
+#include <stdexcept>
 
 template <typename T>
 std::vector<T> parseArray(const std::string &s) {
