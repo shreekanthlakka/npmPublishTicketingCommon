@@ -13,7 +13,7 @@ const BaseImages = Object.freeze({
     python: "python:alpine",
     ruby: "ruby:alpine",
     java: "openjdk:alpine",
-    rust: "rust",
+    rust: "rust:latest",
     cplusplus: "gcc:latest",
 });
 
@@ -23,7 +23,17 @@ const Commend = Object.freeze({
     ruby: ["ruby", "/scripts/index.rb"],
     java: ["java", "-jar", "/scripts/index.jar"],
     rust: ["cargo", "run", "--bin", "main"],
-    cplusplus: ["g++", "-o", "main", "/scripts/main.cpp", "&&", "./main"],
+    cplusplus: [
+        "/bin/sh",
+        "-c",
+        "&&",
+        "g++",
+        "-o",
+        "main",
+        "/scripts/main.cpp",
+        "&&",
+        "./main",
+    ],
 });
 
 export { Languages, BaseImages, Commend };
