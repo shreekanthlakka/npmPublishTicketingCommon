@@ -12,6 +12,8 @@ const Subjects = Object.freeze({
 const LeetCodeSubjects = Object.freeze({
     LeetCodeProblemCreated: "leetcode:problem:created",
     LeetCodeProblemSubmitted: "leetcode:problem:submitted",
+    LeetCodeProblemDeleted: "leetcode:problem:deleted",
+    LeetCodeProblemUpdated: "leetcode:problem:updated",
     UserLoggedIn: "user:loggedin",
     UserCreated: "user:created",
     JobCompletedStatus: "job:completed:status",
