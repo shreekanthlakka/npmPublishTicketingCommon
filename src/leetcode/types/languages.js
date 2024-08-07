@@ -39,6 +39,7 @@ const LanguageFileExtensions = Object.freeze({
     javascript: "js",
     rust: "rs",
     cplusplus: "cpp",
+    python: "py",
 });
 
 export { Languages, BaseImages, Commend, LanguageFileExtensions };

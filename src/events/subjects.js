@@ -20,6 +20,7 @@ const LeetCodeSubjects = Object.freeze({
     OrderCreated: "order:created",
     OrderUpdated: "order:updated",
     OrderCancelled: "order:cancelled",
+    PaymentStatus: "payment:status",
 });
 
 export { Subjects, LeetCodeSubjects };
