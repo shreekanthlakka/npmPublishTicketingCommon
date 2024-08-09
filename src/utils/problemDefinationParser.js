@@ -20,8 +20,8 @@ function ${this.functionName}(${inputs}) {
         const output = this.output.variableName;
         return `
 def ${this.functionName}(${inputs}):
-    # write your logic here
-    return ${output}`;
+    # Write your logic here
+    return result`;
     }
 
     generateRust() {

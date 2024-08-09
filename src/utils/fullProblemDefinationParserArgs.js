@@ -143,17 +143,25 @@ int main(int argc, char* argv[]) {
                 }])`;
             })
             .join("\n");
-        const functionCall = `      result = ${this.functionName}(${inputs})`;
-        const outputWrite = `       print(result)`;
+        const functionCall = `result = ${this.functionName}(${inputs})`;
+        const outputWrite = ` print(result)`;
         return `
 import json
 import sys
 
-##USER_CODE_HERE##
+def ${this.functionName}(${inputs}):
+    # Write your logic here
+    # Assuming you assign the output to the variable 'result'
+    # e.g., result = a + b
+    result = None
+    return result
 
-${inputReads}
-${functionCall}
-${outputWrite}`;
+if __name__ == "__main__":
+    ${inputReads}
+
+    ${functionCall}
+
+    ${outputWrite}`;
     }
 
     mapTypeToCpp(type) {
