@@ -142,9 +142,9 @@ int main(int argc, char* argv[]) {
                     index + 1
                 }])`;
             })
-            .join("\n   ");
+            .join("\n    ");
         const functionCall = `result = ${this.functionName}(${inputs})`;
-        const outputWrite = ` print(result)`;
+        const outputWrite = `print(result)`;
         return `
 import json
 import sys
