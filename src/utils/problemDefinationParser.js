@@ -21,7 +21,7 @@ function ${this.functionName}(${inputs}) {
         return `
 def ${this.functionName}(${inputs}):
     # write your logic here
-return ${output}`;
+    return ${output}`;
     }
 
     generateRust() {
