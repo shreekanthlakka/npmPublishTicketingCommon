@@ -149,12 +149,7 @@ int main(int argc, char* argv[]) {
 import json
 import sys
 
-def ${this.functionName}(${inputs}):
-    # Write your logic here
-    # Assuming you assign the output to the variable 'result'
-    # e.g., result = a + b
-    result = None
-    return result
+##USER_CODE_HERE##
 
 if __name__ == "__main__":
     ${inputReads}
