@@ -71,37 +71,6 @@ fn main() {
     generateCpp() {
         const inputReads = this.inputFields
             .map((field, index) => {
-                // const type = this.mapTypeToCpp(field.type);
-                // if (type.startsWith("std::vector")) {
-                //     return `${type} ${
-                //         field.variableName
-                //     } = parseArray<int>(argv[${index + 1}]);`;
-                // } else if (type === "std::string") {
-                //     return `${type} ${field.variableName} = argv[${
-                //         index + 1
-                //     }];`;
-                // } else {
-                //     return `${type} ${field.variableName} = std::stoi(argv[${
-                //         index + 1
-                //     }]);`;
-                // }
-                // const type = this.mapTypeToCpp(field.type);
-                // if (type.startsWith("std::vector")) {
-                //     // Adjust the parseArray template type based on the field type
-                //     const elementType = type.match(/std::vector<(.+)>/)[1];
-                //     return `${type} ${
-                //         field.variableName
-                //     } = parseArray<${elementType}>(argv[${index + 1}]);`;
-                // } else if (type === "std::string") {
-                //     return `${type} ${field.variableName} = argv[${
-                //         index + 1
-                //     }];`;
-                // } else {
-                //     // Add more type parsing if needed
-                //     return `${type} ${field.variableName} = std::stoi(argv[${
-                //         index + 1
-                //     }]);`;
-                // }
                 const type = this.mapTypeToCpp(field.type);
                 if (type.startsWith("std::vector")) {
                     // Adjust the parseArray template type based on the field type
@@ -161,6 +130,30 @@ int main(int argc, char* argv[]) {
     return 0;
 }
         `;
+    }
+
+    generatePython() {
+        const inputs = this.inputFields
+            .map((field) => field.variableName)
+            .join(", ");
+        const inputReads = this.inputFields
+            .map((field, index) => {
+                return `${field.variableName} = json.loads(sys.argv[${
+                    index + 1
+                }])`;
+            })
+            .join("\n\t");
+        const functionCall = `result = ${this.functionName}(${inputs})`;
+        const outputWrite = `print(result)`;
+        return `
+import json
+import sys
+
+##USER_CODE_HERE##
+
+${inputReads}
+${functionCall}
+${outputWrite}`;
     }
 
     mapTypeToCpp(type) {
