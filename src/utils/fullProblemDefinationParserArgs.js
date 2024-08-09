@@ -142,7 +142,7 @@ int main(int argc, char* argv[]) {
                     index + 1
                 }])`;
             })
-            .join("\n\t");
+            .join("\n");
         const functionCall = `result = ${this.functionName}(${inputs})`;
         const outputWrite = `print(result)`;
         return `
