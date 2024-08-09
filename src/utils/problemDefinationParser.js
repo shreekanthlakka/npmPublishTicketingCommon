@@ -21,6 +21,8 @@ function ${this.functionName}(${inputs}) {
         return `
 def ${this.functionName}(${inputs}):
     # Write your logic here
+    # Assuming you assign the output to the variable 'result'
+    result = ${output}
     return result`;
     }
 

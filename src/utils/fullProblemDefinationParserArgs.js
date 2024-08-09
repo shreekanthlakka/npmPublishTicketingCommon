@@ -15,7 +15,7 @@ class GenerateFullBoilerPlateCodeArgs {
                     index + 2
                 }]);`;
             })
-            .join("\n\t");
+            .join("\n   ");
         const functionCall = `const result = ${this.functionName}(${inputs});`;
         const outputWrite = `console.log(result);`;
 
@@ -48,7 +48,7 @@ ${outputWrite}
                     return `let ${field.variableName}: ${type} = args[${index}].parse().expect("Invalid input for ${field.variableName}");`;
                 }
             })
-            .join("\n\t");
+            .join("\n   ");
         const functionCall = `let result = ${
             this.functionName
         }(${this.inputFields.map((field) => field.variableName).join(", ")});`;
@@ -89,7 +89,7 @@ fn main() {
                     }]);`;
                 }
             })
-            .join("\n\t");
+            .join("\n   ");
         const functionCall = `${this.mapTypeToCpp(this.output.type)} result = ${
             this.functionName
         }(${this.inputFields.map((field) => field.variableName).join(", ")});`;
@@ -142,7 +142,7 @@ int main(int argc, char* argv[]) {
                     index + 1
                 }])`;
             })
-            .join("\n");
+            .join("\n   ");
         const functionCall = `result = ${this.functionName}(${inputs})`;
         const outputWrite = ` print(result)`;
         return `
