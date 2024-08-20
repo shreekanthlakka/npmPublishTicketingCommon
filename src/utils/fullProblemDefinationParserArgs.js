@@ -11,9 +11,15 @@ class GenerateFullBoilerPlateCodeArgs {
             .join(", ");
         const inputReads = this.inputFields
             .map((field, index) => {
-                return `const ${field.variableName} = JSON.parse(process.argv[${
-                    index + 2
-                }]);`;
+                return `
+                let ${field.variableName} = process.argv[${index + 2}];
+                try {
+                    ${field.variableName} = JSON.parse(${field.variableName});
+                } catch (e) {
+                    if (typeof ${field.variableName} !== "string") {
+                        ${field.variableName} = String(${field.variableName});
+                    }
+                }`;
             })
             .join("\n   ");
         const functionCall = `const result = ${this.functionName}(${inputs});`;
@@ -230,3 +236,11 @@ if __name__ == "__main__":
 }
 
 export { GenerateFullBoilerPlateCodeArgs };
+
+/**
+ * 
+ *  // const ${field.variableName} = JSON.parse(process.argv[${
+                //     index + 2
+                // }]);`;
+ * 
+ */
